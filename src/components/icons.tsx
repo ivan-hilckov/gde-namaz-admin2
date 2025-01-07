@@ -4,21 +4,24 @@ import { IconSvgProps } from "@/types";
 
 export const Logo: React.FC<IconSvgProps> = ({
   size = 36,
+  width,
   height,
   ...props
 }) => (
   <svg
-    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size || width}
     height={size || height}
-    viewBox="0 0 32 32"
-    width={size || height}
     {...props}
   >
     <path
-      clipRule="evenodd"
-      d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-      fill="currentColor"
-      fillRule="evenodd"
+      fill="#76BD43"
+      d="M50 15c19.3 0 35 15.7 35 35S69.3 85 50 85 15 69.3 15 50 30.7 15 50 15m0-5C27.6 10 10 27.6 10 50s17.6 40 40 40 40-17.6 40-40S72.4 10 50 10z"
+    />
+    <path
+      fill="#FFF"
+      d="M50 30c11 0 20 9 20 20s-9 20-20 20-20-9-20-20 9-20 20-20m0-5c-13.8 0-25 11.2-25 25s11.2 25 25 25 25-11.2 25-25-11.2-25-25-25z"
     />
   </svg>
 );
@@ -139,21 +142,21 @@ export const HeartFilledIcon = ({
   ...props
 }: IconSvgProps) => (
   <svg
-    aria-hidden="true"
-    focusable="false"
-    height={size || height}
-    role="presentation"
-    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
     width={size || width}
+    height={size || height}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
-    <path
-      d="M12.62 20.81c-.34.12-.9.12-1.24 0C8.48 19.82 2 15.69 2 8.69 2 5.6 4.49 3.1 7.56 3.1c1.82 0 3.43.88 4.44 2.24a5.53 5.53 0 0 1 4.44-2.24C19.51 3.1 22 5.6 22 8.69c0 7-6.48 11.13-9.38 12.12Z"
-      fill="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1.5}
-    />
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+    <path d="M9 12h12l-3 -3" />
+    <path d="M18 15l3 -3" />
   </svg>
 );
 
