@@ -2,8 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import IndexPage from "@/pages/index";
 import SignInPage from "@/pages/signin";
 import LogoutPage from "@/pages/logout";
-
-import Wrapper from "@/components/Wrapper";
 import { AuthProvider } from "@/components/authProvider";
 import RequireAuth from "@/components/requireAuth";
 
