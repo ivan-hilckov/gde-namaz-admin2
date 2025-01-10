@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/components/authProvider";
+import { useAuth } from "@/components/auth-provider";
 
 function LogoutPage() {
   const auth = useAuth();

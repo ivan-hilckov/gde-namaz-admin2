@@ -3,9 +3,9 @@ import { CardBody, Input } from "@nextui-org/react";
 import clsx from "clsx";
 import { Card, CardFooter, Button } from "@nextui-org/react";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/icons";
-import { useAuth } from "@/components/authProvider";
+import { useAuth } from "@/components/auth-provider";
 
 export default function SignInPage() {
   const [username, setUsername] = useState("");
@@ -14,6 +14,7 @@ export default function SignInPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const auth = useAuth();
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -36,7 +37,7 @@ export default function SignInPage() {
         if (hasError) {
           setError(true);
         } else {
-          navigate("/");
+          navigate(location.state?.from || "/");
         }
       });
     } else {
@@ -49,8 +50,6 @@ export default function SignInPage() {
   }
 
   const isDisabled = !username || !password || isLoading;
-
-  console.log(isDisabled);
 
   return (
     <AuthLayout>
