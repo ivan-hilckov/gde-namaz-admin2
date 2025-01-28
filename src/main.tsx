@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import { Provider } from "./provider.tsx";
 import "@/styles/globals.css";
+import "leaflet/dist/leaflet.css";
+import "leaflet.pm/dist/leaflet.pm.css";
 
 const originalWarn = console.warn;
 

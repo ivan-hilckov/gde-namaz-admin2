@@ -1,0 +1,10 @@
+.table {
+  min-height: 400px;
+}
+
+.loading {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
