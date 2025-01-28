@@ -37,6 +37,11 @@ export default function IndexPage() {
   const [hasToilet, setHasToilet] = useState<boolean>(false);
   const [hasWashroom, setHasWashroom] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [mapState, setMapState] = useState({
+    lat: 42.979286,
+    lng: 47.500844,
+    zoom: 10,
+  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -110,7 +115,7 @@ export default function IndexPage() {
           <Tab key="map" title="Карта">
             <Card>
               <CardBody>
-                <VenuesMap />
+                <VenuesMap mapState={mapState} setMapState={setMapState} />
               </CardBody>
             </Card>
           </Tab>

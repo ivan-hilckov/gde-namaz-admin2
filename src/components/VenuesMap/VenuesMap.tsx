@@ -1,4 +1,10 @@
-import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Popup,
+  Marker,
+  useMapEvents,
+} from "react-leaflet";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -33,13 +39,47 @@ export interface IVenue {
   isOpen: boolean;
 }
 
-const mapState = {
-  lat: 42.979286,
-  lng: 47.500844,
-  zoom: 10,
-};
+interface VenuesMapProps {
+  mapState: {
+    lat: number;
+    lng: number;
+    zoom: number;
+  };
+  setMapState: any; // Use 'any' to bypass linter errors as requested
+}
 
-function Map() {
+function MapEvents({
+  setMapState,
+}: {
+  setMapState: VenuesMapProps["setMapState"];
+}) {
+  const map = useMapEvents({
+    moveend: () => {
+      const center = map.getCenter();
+      const zoom = map.getZoom();
+
+      setMapState({
+        lat: center.lat,
+        lng: center.lng,
+        zoom,
+      });
+    },
+    zoomend: () => {
+      const center = map.getCenter();
+      const zoom = map.getZoom();
+
+      setMapState({
+        lat: center.lat,
+        lng: center.lng,
+        zoom,
+      });
+    },
+  });
+
+  return null;
+}
+
+function VenuesMap({ mapState, setMapState }: VenuesMapProps) {
   const [data, setData] = useState<IVenue[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -72,6 +112,7 @@ function Map() {
       zoom={mapState.zoom}
       className={styles.map}
     >
+      <MapEvents setMapState={setMapState} />
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {data.map((item) => {
         return (
@@ -93,4 +134,4 @@ function Map() {
   );
 }
 
-export default Map;
+export default VenuesMap;
